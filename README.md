@@ -9,4 +9,9 @@
 
 #### Les roles :
 
-- **apache** : contient tous les fichiers nécessaires au Déploiement et à la configuration d'un serveur apache sur les nodes concernés. 
+- **apache** : contient tous les fichiers nécessaires au Déploiement et à la configuration d'un serveur apache sur les nodes concernés.
+
+
+Les machines utilisées sont des VM virtualisées avec **Virtualbox** dans ma machine principale
+
+Le **node manager** est ma machine principale **Debian10 buster**
