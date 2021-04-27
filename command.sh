@@ -7,3 +7,9 @@ ansible -i hosts.ini -m authorized_key -a 'user=zenprog state=present key="{{ lo
 # obtenir la configuration des nodes via le playbook display_config.yml
 
 ansible-playbook -i hosts.ini -u zenprog display_config.yml
+
+# installer apache sur cent-os
+ansible-playbook -i hosts.ini -u zenprog --become --ask-become-pass install-apache-cent-os.yml
+
+# installer apache sur debian
+ansible-playbook -i hosts.ini -u zenprog --become --ask-become-pass install-apache-debian.yml

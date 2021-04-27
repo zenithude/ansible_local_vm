@@ -1,0 +1,12 @@
+---
+# 1. Cette tâche permet d’installer Apache (httpd) à l’aide du module yum
+- name: apache installation
+  apt:
+      name: apache2
+      state: latest
+#2. Cette tâche active le service Apache
+- name: apache service activation
+  service:
+    name: apache2
+    state: started
+    enabled: yes

@@ -1,0 +1,5 @@
+---
+- name: installation Apache
+  hosts: cent-apache
+  roles:
+    - role: apache-cent-os

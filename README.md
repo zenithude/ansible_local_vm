@@ -3,14 +3,15 @@
 - **ansible.cfg**: contient les variables d'environnement
 - **command.sh**: contient des commandes directes vers les nodes
 - **display_config.yml**: playbook pour obtenir les configuartions des divers nodes
-- **hosts.ini** : fichier utilisé pour toutes les commandes et rôles applicables à tous les nodes
-- **hosts_cent_os.ini**:  fichier utilisé pour toutes les commandes et rôles applicables aux nodes cent Os
-- **hosts_debian.ini**: fichier utilisé pour toutes les commandes et rôles applicables aux nodes Debian10
+- **install-apache-cent-os.yml** : installation apache pkg httpd sur Cent-Os
+- **install-apache-debian.yml** : installation apache pkg apache2 sur Debian10
+- **hosts.ini** : fichier inventaire utilisé pour toutes les commandes et rôles applicables à tous les roles
 
 #### Les roles :
 
-- **apache** : contient tous les fichiers nécessaires au Déploiement et à la configuration d'un serveur apache sur les nodes concernés.
+- **apache-cent-os** : contient tous les fichiers nécessaires au Déploiement et à la configuration d'un serveur apache sur le node Cent-OS host: cent-apache.
 
+- **apache-debian** : contient tous les fichiers nécessaires au Déploiement et à la configuration d'un serveur apache sur le node debian host: dev-apache.
 
 Les machines utilisées sont des VM virtualisées avec **Virtualbox** dans ma machine principale
 
