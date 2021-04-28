@@ -2,7 +2,7 @@
 
 Les rôles crées par la commande suivante obtiennent l'Arborescence qui suit
 
- `ansible-galxy init <nom du role>`
+ `ansible-galaxy init <nom du role>`
 
 - **files**: Contient tous les fichiers à copier sur les nodes
 - **templates**: Tous les fichiers de templates Jinja
