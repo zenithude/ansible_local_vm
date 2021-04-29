@@ -1,4 +1,5 @@
 ---
+
 # 1. Cette tâche permet d’installer Apache (httpd) à l’aide du module yum
 - name: apache installation
   yum:
@@ -10,3 +11,7 @@
     name: httpd
     state: started
     enabled: yes
+#3. Cette tâche fait appel à un autre fichier de configuration pour installer PHP. Elle est exécutée uniquement si la variable php_install est à vraie (par défaut, elle est à faux)
+- name: install php7-4 packages
+  include: php7-4_install.yml
+  when: php_install|default(False)|bool

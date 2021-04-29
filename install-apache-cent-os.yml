@@ -3,3 +3,4 @@
   hosts: cent-apache
   roles:
     - role: apache-cent-os
+      php_install: yes

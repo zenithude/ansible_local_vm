@@ -3,3 +3,4 @@
   hosts: dev-apache
   roles:
     - role: apache-debian
+      php_install: yes

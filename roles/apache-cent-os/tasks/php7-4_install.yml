@@ -1,0 +1,15 @@
+---
+
+# install le depot epel
+- name: epel activation
+  yum:
+    name: epel-release
+    state: present
+
+#. Cette tâche installe PHP7 et ses extensions
+- name: install php7.4 packages
+  yum:
+    name: php,php-mysqlnd,php-xml,php-mbstring,libmcrypt,libtomcrypt,php-gd,php-intl
+    state: latest
+  changed_when: yes
+  notify: [ apache restart ]
