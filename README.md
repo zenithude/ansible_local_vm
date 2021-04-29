@@ -4,13 +4,42 @@
 - **display_config.yml**: playbook pour obtenir les configurations des divers nodes
 - **install-apache-cent-os.yml** : installation apache pkg httpd sur Cent-Os
 - **install-apache-debian.yml** : installation apache pkg apache2 sur Debian10
-- **hosts.ini** : fichier inventaire utilisé pour toutes les commandes et rôles applicables à tous les roles
+- **hosts.ini** : fichier inventaire utilisé pour toutes les commandes et rôles applicables à tous les roles (ce fichier contient les noms ou IP des différentes machines: remplacez les noms contenus dedans par vos hostname ou IP) pour utiliser les hostname compléter le fichier /etc/hosts comme dans l'exemple ci dessous.
+
+**fichier /etc/hosts**
+
+    127.0.0.1	localhost
+    127.0.1.1	zenithude
+    192.168.0.12 	localhost zenithude
+
+    # ######################## #
+    # #   Mon reseau local   # #
+    # ######################## #
+    # ## VM ## #
+    # dev-mysql debian VM
+    192.168.0.20	dev-mysql
+    # dev-apache debian VM
+    192.168.0.21	dev-apache
+    # dev-apache cent-os VM
+    192.168.0.22	cent-apache
+    # dev-mysql cent-os VM
+    192.168.0.23	cent-mysql
+    # ######################## #
+    # #   Fin reseau local   # #
+    # ######################## #
+
+    # The following lines are desirable for IPv6 capable hosts
+    ::1     localhost ip6-localhost ip6-loopback
+    ff02::1 ip6-allnodes
+    ff02::2 ip6-allrouters
+
 
 #### Les roles :
 
-- **apache-cent-os** : contient tous les fichiers nécessaires au Déploiement et à la configuration d'un serveur apache sur le node Cent-OS host: cent-apache.
+- **apache-cent-os** : contient tous les fichiers nécessaires au Déploiement et à la configuration d'un serveur apache et de php7 et ses modules sur le node Cent-OS host: cent-apache.
 
-- **apache-debian** : contient tous les fichiers nécessaires au Déploiement et à la configuration d'un serveur apache sur le node debian host: dev-apache.
+- **apache-cent-os** : contient tous les fichiers nécessaires au Déploiement et à la configuration d'un serveur apache et de php7 et ses modules sur le node Cent-OS host: cent-apache.
+- **apache-debian** : contient tous les fichiers nécessaires au Déploiement et à la configuration d'un serveur apache et sur le node debian host: dev-apache.
 
 Les machines utilisées sont des VM virtualisées avec **Virtualbox** dans ma machine principale
 
@@ -20,23 +49,19 @@ Le **node manager** est ma machine principale **Debian10 buster**
 
 #### Quelques commandes à lancer pour utiliser les playbook, les roles ou pour communiquer directement avec les nodes depuis le node manager.
 
+> Dans toutes les commandes remplacez **'your user'** par l'utilisateur de la machine distante et/ou virtuelle
+
 ##### envoyer la clé edcsa à toutes les machines du reseau du fichier hosts.ini
-`ansible -i hosts.ini -m authorized_key -a 'user=zenprog state=present key="{{ lookup("file", "/home/zenprog/.ssh/id_ecdsa.pub") }}"' --user zenprog --ask-pass --become --ask-become-pass all`
+`ansible -i hosts.ini -m authorized_key -a 'user='your user' state=present key="{{ lookup("file", "/home/'your user'/.ssh/id_ecdsa.pub") }}"' --user 'your user' --ask-pass --become --ask-become-pass all`
 
 ##### obtenir la configuration des nodes via le playbook display_config.yml
-`ansible-playbook -i hosts.ini -u zenprog display_config.yml`
-
-##### installer apache sur cent-os
-`ansible-playbook -i hosts.ini -u zenprog --become --ask-become-pass install-apache-cent-os.yml`
-
-##### installer apache sur debian
-`ansible-playbook -i hosts.ini -u zenprog --become --ask-become-pass install-apache-debian.yml`
+`ansible-playbook -i hosts.ini -u 'your user' display_config.yml`
 
 ##### installer php sur cent-os
 
 Par defaut php 7.2 est présent et prêt pour l'installation afin de pouvoir installer php7.4 changer le module par défaut à choisir en exécutant la commande suivante :
 
-`ansible -i hosts.ini -m raw -a "sudo dnf -y module reset php && sudo dnf -y module enable php:7.4" cent-apache --user zenprog --ask-pass`
+`ansible -i hosts.ini -m raw -a "sudo dnf -y module reset php && sudo dnf -y module enable php:7.4" cent-apache --user 'your user' --ask-pass`
 
 ###### Retour de la commande réussie :
 
@@ -59,3 +84,12 @@ Par defaut php 7.2 est présent et prêt pour l'installation afin de pouvoir ins
 
     Terminé !
     Shared connection to cent-apache closed.
+
+
+##### installer apache et php sur cent-os
+
+`ansible-playbook -i hosts.ini -u 'your user' --become --ask-become-pass install-apache-cent-os.yml`
+
+##### installer apache et php sur debian
+
+`ansible-playbook -i hosts.ini -u 'your user' --become --ask-become-pass install-apache-debian.yml`
