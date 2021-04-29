@@ -38,7 +38,6 @@
 
 - **apache-cent-os** : contient tous les fichiers nécessaires au Déploiement et à la configuration d'un serveur apache et de php7 et ses modules sur le node Cent-OS host: cent-apache.
 
-- **apache-cent-os** : contient tous les fichiers nécessaires au Déploiement et à la configuration d'un serveur apache et de php7 et ses modules sur le node Cent-OS host: cent-apache.
 - **apache-debian** : contient tous les fichiers nécessaires au Déploiement et à la configuration d'un serveur apache et sur le node debian host: dev-apache.
 
 Les machines utilisées sont des VM virtualisées avec **Virtualbox** dans ma machine principale
