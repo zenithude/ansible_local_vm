@@ -1,0 +1,6 @@
+---
+- name: installation mariadb
+  hosts: dev-mysql
+  gather_facts: no
+  roles:
+    - role: mariadb-debian

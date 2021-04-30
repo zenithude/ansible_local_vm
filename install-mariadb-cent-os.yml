@@ -1,0 +1,6 @@
+---
+- name: installation mariadb
+  hosts: cent-mysql
+  gather_facts: no
+  roles:
+    - role: mariadb-cent-os

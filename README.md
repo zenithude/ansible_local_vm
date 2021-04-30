@@ -4,6 +4,8 @@
 - **display_config.yml**: playbook pour obtenir les configurations des divers nodes
 - **install-apache-cent-os.yml** : installation apache pkg httpd sur Cent-Os
 - **install-apache-debian.yml** : installation apache pkg apache2 sur Debian10
+- **install-mariadb-cent-os.yml** : installation mariadb-server sur Cent-Os
+- **install-mariadb-debian.yml** : installation mariadb-server sur Debian10
 - **hosts.ini** : fichier inventaire utilisé pour toutes les commandes et rôles applicables à tous les roles (ce fichier contient les noms ou IP des différentes machines: remplacez les noms contenus dedans par vos hostname ou IP) pour utiliser les hostname compléter le fichier /etc/hosts comme dans l'exemple ci dessous.
 
 **fichier /etc/hosts**
@@ -38,7 +40,11 @@
 
 - **apache-cent-os** : contient tous les fichiers nécessaires au Déploiement et à la configuration d'un serveur apache et de php7 et ses modules sur le node Cent-OS host: cent-apache.
 
-- **apache-debian** : contient tous les fichiers nécessaires au Déploiement et à la configuration d'un serveur apache et sur le node debian host: dev-apache.
+- **apache-debian** : contient tous les fichiers nécessaires au Déploiement et à la configuration d'un serveur apache etde php7 et ses modules sur le node debian host: dev-apache.
+
+- **mariadb-cent-os** : contient tous les fichiers nécessaires au Déploiement et à la configuration d'un serveur mysql sur le node Cent-OS host: cent-apache.
+
+- **mariadb-debian** : contient tous les fichiers nécessaires au Déploiement et à la configuration d'un serveur mysql sur le node debian host: dev-apache.
 
 Les machines utilisées sont des VM virtualisées avec **Virtualbox** dans ma machine principale
 
